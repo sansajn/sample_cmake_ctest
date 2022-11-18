@@ -4,8 +4,10 @@
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
 
+using std::vector;
+
 TEST_CASE("vectors can be sized and resized", "[vector]") {
-	std::vector<int> v(5);
+	vector<int> v(5);
 	REQUIRE(v.size() == 5);
 	REQUIRE(v.capacity() >= 5);
 
