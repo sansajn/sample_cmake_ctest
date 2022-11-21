@@ -62,3 +62,7 @@ make -C docker/ test
 ```
 
 to run unit tests.
+
+In a Jenkins create *Multibranch Pipeline* job and ensure *Mode* is set `by Jenkinsfile` and *Script Path` to `Jenkinsfile` in a *Build Configuration* section.
+
+> we expect docker installed and available for jenkins user on build machine
