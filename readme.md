@@ -47,7 +47,7 @@ Test project /home/hlavatovic/devel/sample/build-sample_cmake_ctest
 Total Test time (real) =   0.00 sec
 ```
 
-To build inside docker image run
+To build inside docker container run
 
 ```bash
 make -C docker/ build
@@ -55,13 +55,13 @@ make -C docker/ build
 
 > **note**: `build` target also handles docker image creation (but not update)
 
-to build sample and
+command to build sample and
 
 ```bash
 make -C docker/ test
 ```
 
-to run unit tests.
+command to run unit tests.
 
 In a Jenkins create *Multibranch Pipeline* job and ensure *Mode* is set `by Jenkinsfile` and *Script Path` to `Jenkinsfile` in a *Build Configuration* section.
 
