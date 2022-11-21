@@ -1,8 +1,4 @@
-This directory contains following
-
-- `hello.cpp`: Catch 2 (v2) hello sample.
-
-Catch2 related samples.
+The repository contains CMake / CTest sample with docker and Jenkins integration.
 
 Install dependencies with 
 
@@ -20,6 +16,8 @@ Build with
 cmake -B build-sample_cmake_ctest -S sample_cmake_ctest
 cmake --build build-sample_cmake_ctest -j16
 ```
+
+> use `--verbose` for verbose build output in a `--build` command
 
 commands from outside of `sample_cmake_ctest` project directory. Samples are build in a `build-sample_cmake_ctest` directory.
 
@@ -49,5 +47,18 @@ Test project /home/hlavatovic/devel/sample/build-sample_cmake_ctest
 Total Test time (real) =   0.00 sec
 ```
 
-> TODO: describe Jenkins setup ...
+To build inside docker image run
 
+```bash
+make -C docker/ build
+```
+
+> **note**: `build` target also handles docker image creation (but not update)
+
+to build sample and
+
+```bash
+make -C docker/ test
+```
+
+to run unit tests.
