@@ -9,6 +9,10 @@ pipeline {
 		stage("test") { steps {
 			sh 'make -C docker test'
 		}}
+		
+		stage("clean-up") { steps {
+			sh 'make -C docker rm'
+		}}
 	}
 	
 	post { always {
