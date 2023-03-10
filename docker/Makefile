@@ -36,6 +36,7 @@ clean: start
 	docker exec ${CONTAINER_NAME} rm -rf build
 
 build: start clean
+	docker exec ${CONTAINER_NAME} ls -lah
 	docker exec ${CONTAINER_NAME} cmake -S . -B build
 	docker exec ${CONTAINER_NAME} cmake --build build -j16
 
