@@ -9,13 +9,10 @@ pipeline {
 		stage("test") { steps {
 			sh 'make -C docker test'
 		}}
-		
-		stage("clean-up") { steps {
-			sh 'make -C docker rm'
-		}}
 	}
 	
 	post { always {
+		sh 'make -C docker rm'
 		junit 'build/junit.report'
 		emailext body: '${JELLY_SCRIPT, template="text"}', subject: '$DEFAULT_SUBJECT', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
 	}}
