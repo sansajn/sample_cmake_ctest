@@ -3,21 +3,21 @@ pipeline {
 
 	stages {
 		stage("docker image") { steps {
-			sh 'make image'
+			sh 'make -C shared_docker image'
 		}}
 
 		stage("build") { steps {
-			sh 'make build'
+			sh 'make -C shared_docker build'
 		}}
 		
 		stage("test") { steps {
-			sh 'make test'
+			sh 'make -C shared_docker test'
 		}}
 	}
 	
 	post { always {
 		sh 'make rm'
-		junit 'report/junit.report'
+		junit 'build/junit.report'
 		emailext body: '${JELLY_SCRIPT, template="text"}', subject: '$DEFAULT_SUBJECT', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']]
 	}}
 }
