@@ -32,7 +32,7 @@ purge: rm
 	docker rmi ${IMAGE_NAME}
 
 clean: start
-	rm -r report
+	-rm -r report
 	docker exec ${CONTAINER_NAME} rm -rf build
 
 build: start clean
@@ -41,7 +41,7 @@ build: start clean
 
 test: build
 	docker exec ${CONTAINER_NAME} ctest --test-dir build --output-on-failure --output-junit junit.report
-	mkdir report
+	-mkdir report
 	docker cp ${CONTAINER_NAME}:/sample_cmake_ctest/build/junit.report report/junit.report
 
 .PHONY: image start join stop rm purge clean build test
